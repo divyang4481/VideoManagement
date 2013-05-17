@@ -20,20 +20,47 @@ namespace VideoManagement
         private string Genre;
         private string Description;
         private float Rating;
+        private ushort Year;
 
         public Video()
         {
         }
 
-        public Video(string name, string genre, string description, float rating)
+        public Video(string name, string genre, string description, float rating, ushort year = 2013)
         {
             Name = name;
             Genre = genre;
             Description = description;
             Rating = rating;
+            Year = year;
         }
 
         public string GetName()
+        {
+            return Name;
+        }
+
+        public string GetGenre()
+        {
+            return Genre;
+        }
+
+        public string GetDescription()
+        {
+            return Description;
+        }
+
+        public float GetRating()
+        {
+            return Rating;
+        }
+
+        public ushort GetYear()
+        {
+            return Year;
+        }
+
+        public override string ToString()
         {
             return Name;
         }
