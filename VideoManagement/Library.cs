@@ -11,7 +11,7 @@ namespace VideoManagement
     /// </summary>
     public class Library
     {
-        private List<Video> Videos;
+        public List<Video> Videos;
         TypeOfVideo Type;
 
         // Create an empty library of a specific type, i.e. TypeOfVideo.Movie
@@ -28,9 +28,9 @@ namespace VideoManagement
         }
 
         // Add a video to the library by specifying all relevant information
-        public void Add(string name, string genre, string description, float rating)
+        public void Add(string name, string genre, string description, float rating, ushort year = 1912)
         {
-            Videos.Add(new Video(name, genre, description, rating));
+            Videos.Add(new Video(name, genre, description, rating, year));
         }
 
         // Removes a specific video by name
@@ -51,7 +51,5 @@ namespace VideoManagement
         {
             return Videos.Find(delegate(Video v) { return v.GetName() == name; });
         }
-
-
     }
 }
