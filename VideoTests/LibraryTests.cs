@@ -42,6 +42,7 @@ namespace VideoTests
             Library Videos = new Library(TypeOfVideo.TVShow);
             Videos.Add(name, genre, description, rating);
 
+            // asserts
             Assert.AreEqual((Videos.GetByName(name)).GetName(), name, "Video found does not match in name");
             Assert.IsTrue(Videos.GetByName("doesn't exist") == null, "GetByName found something that it shouldn't have");
         }

@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 namespace VideoManagement
 {
     // Videos will likely fall into two categories, TV Shows and Movies. It might
-    // help to keep track of their type.
+    // be helpful to keep track of their type.
     public enum TypeOfVideo { TVShow, Movie }
 
+    /// <summary>
+    /// Instances of the video class will contain basic information on the video and
+    /// provide minimal ways of interacting with it.
+    /// </summary>
     public class Video
     {
         private string Name;
