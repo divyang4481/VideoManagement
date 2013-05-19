@@ -49,19 +49,19 @@ namespace VideoManagement
         // Returns the number of videos removed
         public int Remove(string name)
         {
-            return Videos.RemoveAll(delegate(Video v) { return v.GetName() == name; });
+            return Videos.RemoveAll(delegate(Video v) { return v.Title == name; });
         }
 
         // Checks to see if a video is in the Library by name
         public bool Exists(string name)
         {
-            return Videos.Exists(delegate(Video v) { return v.GetName() == name; });
+            return Videos.Exists(delegate(Video v) { return v.Title == name; });
         }
 
         // Finds a Video by name and return a copy of it
         public Video GetByName(string name)
         {
-            return Videos.Find(delegate(Video v) { return v.GetName() == name; });
+            return Videos.Find(delegate(Video v) { return v.Title == name; });
         }
     }
 }

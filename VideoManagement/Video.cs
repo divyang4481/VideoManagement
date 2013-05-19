@@ -16,11 +16,11 @@ namespace VideoManagement
     /// </summary>
     public class Video
     {
-        private string Name;
-        private string Genre;
-        private string Description;
-        private float Rating;
-        private ushort Year;
+        public string Title { get; private set; }
+        public string Genre { get; private set; }
+        public string Description { get; private set; }
+        public float Rating { get; private set; }
+        public ushort Year { get; private set; }
 
         public Video()
         {
@@ -28,41 +28,16 @@ namespace VideoManagement
 
         public Video(string name, string genre, string description, float rating, ushort year = 2013)
         {
-            Name = name;
+            Title = name;
             Genre = genre;
             Description = description;
             Rating = rating;
             Year = year;
         }
 
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public string GetGenre()
-        {
-            return Genre;
-        }
-
-        public string GetDescription()
-        {
-            return Description;
-        }
-
-        public float GetRating()
-        {
-            return Rating;
-        }
-
-        public ushort GetYear()
-        {
-            return Year;
-        }
-
         public override string ToString()
         {
-            return Name;
+            return Title;
         }
     }
 }
