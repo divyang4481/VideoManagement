@@ -39,7 +39,8 @@ namespace VideoManagementWpf
 
         private void AddVideoButton_Click(object sender, RoutedEventArgs e)
         {
-            Movies.Add(NewVideoTextBox.Text, "asdf", "fdsa", 5.0f, 1912);
+            ushort year = Convert.ToUInt16(NewVideoYearTextBox.Text);
+            Movies.AddVideoUsingImdb(NewVideoTextBox.Text, year);
             UpdateListBox();
         }
 
@@ -49,11 +50,11 @@ namespace VideoManagementWpf
             Video selection = (Video)((ListBox)sender).SelectedItem;
             if (selection != null)
             {
-                TitleContent.Content = selection.GetName();
-                YearContent.Content = selection.GetYear();
-                GenreContent.Content = selection.GetGenre();
-                RatingContent.Content = selection.GetRating();
-                DescriptionContent.Content = selection.GetDescription();
+                TitleContent.Content = selection.Title;
+                YearContent.Content = selection.Year;
+                GenreContent.Content = selection.Genre;
+                RatingContent.Content = selection.Rating;
+                DescriptionContent.Content = selection.Description;
             }
         }
 
