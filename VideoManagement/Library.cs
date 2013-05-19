@@ -33,6 +33,18 @@ namespace VideoManagement
             Videos.Add(new Video(name, genre, description, rating, year));
         }
 
+        // Add a video to the library by specifying just the name and year
+        // This will use imdb to attempt to fill in other information and will return true if successful,
+        // otherwise false.
+        public bool AddVideoUsingImdb(string name, ushort year)
+        {
+            Imdb imdb = new Imdb(name, year);
+            Dictionary<string,string> dict = imdb.GetJsonFromApi();
+
+            Add(dict["title"], dict["genre"], dict["description"], 5.0f, year);
+            return true;
+        }
+
         // Removes a specific video by name
         // Returns the number of videos removed
         public int Remove(string name)
