@@ -71,6 +71,16 @@ namespace VideoManagement
         }
 
         /// <summary>
+        /// Add multiple videos by supplying multiple video objects.
+        /// </summary>
+        /// <param name="videos">An array of multiple video objects to add to this Library.</param>
+        public void Add(params Video[] videos)
+        {
+            foreach (Video video in videos)
+                Add(video.Title, video.Genre, video.Description, video.Year);
+        }
+
+        /// <summary>
         /// Add a video to the library by specifying just the name and year. This will attempt
         /// to fill in other information through an api call to imdbapi.org. Exceptions may
         /// be raised in this process and this method does not handle them, so they must be caught
