@@ -22,6 +22,8 @@ namespace VideoManagementWpf
     public partial class MainWindow : Window
     {
         private Library Movies, TVShows;
+        const string MovieListBoxHeading = " --- Movies ------ ",
+                     TVShowListBoxHeading = " --- TV Shows ---- ";
 
         // PersonalFavorites includes both TV Shows and Movies that I enjoy.
         // PersonalFavorites[0] is responsible for storing TV Shows, while
@@ -52,9 +54,9 @@ namespace VideoManagementWpf
                           2012)
             };
 
+            // Prepopulate with favorites
             foreach (Video tvShow in PersonalFavorites[0])
                 TVShows.Add(tvShow);
-
             foreach (Video movie in PersonalFavorites[1])
                 Movies.Add(movie);
 
@@ -65,8 +67,11 @@ namespace VideoManagementWpf
         {
             LibraryListBox.Items.Clear();
 
+            LibraryListBox.Items.Add(MovieListBoxHeading);
             foreach (Video movie in Movies.Videos)
                 LibraryListBox.Items.Add(movie);
+
+            LibraryListBox.Items.Add(TVShowListBoxHeading);
             foreach (Video tvShow in TVShows.Videos)
                 LibraryListBox.Items.Add(tvShow);
         }
@@ -98,6 +103,10 @@ namespace VideoManagementWpf
 
         private void LibraryListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Make sure a heading isn't selected
+            if (((ListBox)sender).SelectedItem.GetType() != typeof(Video))
+                return;
+
             // Get the contents of the selection
             Video selection = (Video)((ListBox)sender).SelectedItem;
             if (selection != null)
