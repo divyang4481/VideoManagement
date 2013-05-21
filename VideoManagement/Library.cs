@@ -12,7 +12,7 @@ namespace VideoManagement
     public class Library
     {
         public List<Video> Videos;
-        TypeOfVideo Type;
+        public TypeOfVideo Type { get; private set; }
 
         // Create an empty library of a specific type, i.e. TypeOfVideo.Movie
         public Library(TypeOfVideo type)
@@ -30,7 +30,7 @@ namespace VideoManagement
         // Add a video to the library by specifying all relevant information
         public void Add(string name, string genre, string description, ushort year)
         {
-            Videos.Add(new Video(name, genre, description, year));
+            Videos.Add(new Video(name, genre, description, year, Type));
         }
         
         // Add a video to the library by passing in a video
