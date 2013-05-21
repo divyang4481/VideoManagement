@@ -26,7 +26,7 @@ namespace VideoManagement
 
         private string Title { get; set; }
         private ushort Year { get; set; }
-        private string RequestUrl { get; set; }
+        private string RequestUrl;
 
         // Disallow the use of a default constructor
         private Imdb()
@@ -46,20 +46,17 @@ namespace VideoManagement
             Year = year;
 
             // Create and set the request URL
-            RequestUrl = MakeRequest();
+            MakeRequest(out RequestUrl);
         }
 
         /// <summary>
         /// Constructs a URL to use in a request to imdbapi.org using the BaseRequest, Title, and Year.
         /// </summary>
-        /// <param name="title">The Title of the given TV Show or Movie</param>
-        /// <param name="year">The year in which the video was first released.
-        /// For TV Shows, the year in which the first episode of season 1 aired.</param>
-        /// <returns>A string of the full request URL</returns>
+        /// <param name="reqString">The newly created request URL</param>
         /// <remarks>It is assumed that Title has already been transformed. I.E. Spaces are replaced with '+'</remarks>
-        private string MakeRequest()
+        private void MakeRequest(out string reqString)
         {
-            return string.Format("{0}&title={1}&year={2}", BaseRequest, Title, Year);
+            reqString = string.Format("{0}&title={1}&year={2}", BaseRequest, Title, Year);
         }
 
         /// <summary>
