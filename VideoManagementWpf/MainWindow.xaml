@@ -5,24 +5,20 @@
         Title="Video Manager" Height="350" Width="525" Background="#FF404040">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="45*"/>
-            <ColumnDefinition Width="472*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="AddVideoButton" Content="Add Video" HorizontalAlignment="Left" Margin="165,7,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.373,4.35" Grid.Column="1" Click="AddVideoButton_Click" Height="23" Background="#FF1D1D1D" Foreground="White"/>
+        <Button x:Name="AddVideoButton" Content="Add Video" HorizontalAlignment="Left" Margin="210,7,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.373,4.35" Click="AddVideoButton_Click" Height="23" Background="#FF1D1D1D" Foreground="White"/>
         <ListBox x:Name="LibraryListBox" HorizontalAlignment="Left" Height="274" Margin="10,35,0,0" VerticalAlignment="Top" Width="275" Grid.ColumnSpan="2" SelectionChanged="LibraryListBox_SelectionChanged" Foreground="White" Background="#FF555555"/>
         <TextBox x:Name="NewVideoTextBox" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2" Foreground="White" Background="#FF555555" Text="Django Unchained"/>
-        <Label x:Name="TitleLabel" Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="245,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="YearLabel" Content="Year" Grid.Column="1" HorizontalAlignment="Left" Margin="245,41,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="GenreLabel" Content="Genre" Grid.Column="1" HorizontalAlignment="Left" Margin="245,72,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="RatingLabel" Content="Rating" Grid.Column="1" HorizontalAlignment="Left" Margin="245,103,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="DescriptionLabel" Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="245,134,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="TitleContent" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="320,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="YearContent" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="320,41,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="GenreContent" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="320,72,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="RatingContent" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="320,103,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="DescriptionContent" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="245,165,0,0" VerticalAlignment="Top" Height="144" Width="217" Foreground="White"/>
-        <TextBox x:Name="NewVideoYearTextBox" HorizontalAlignment="Left" Height="23" Margin="115,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Foreground="White" Background="#FF555555" Grid.Column="1" Text="2012"/>
+        <Label x:Name="TitleLabel" Content="Title" HorizontalAlignment="Left" Margin="290,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="290,41,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="GenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="290,72,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="RatingLabel" Content="Rating" HorizontalAlignment="Left" Margin="290,103,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="DescriptionLabel" Content="Description" HorizontalAlignment="Left" Margin="290,134,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="TitleContent" Content="" HorizontalAlignment="Left" Margin="365,10,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="YearContent" Content="" HorizontalAlignment="Left" Margin="365,41,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="GenreContent" Content="" HorizontalAlignment="Left" Margin="365,72,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="RatingContent" Content="" HorizontalAlignment="Left" Margin="365,103,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock x:Name="DescriptionContent" HorizontalAlignment="Left" Margin="290,165,0,0" VerticalAlignment="Top" Height="144" Width="217" Foreground="White" TextWrapping="Wrap"/>
+        <TextBox x:Name="NewVideoYearTextBox" HorizontalAlignment="Left" Height="23" Margin="160,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Foreground="White" Background="#FF555555" Text="2012"/>
 
     </Grid>
 </Window>

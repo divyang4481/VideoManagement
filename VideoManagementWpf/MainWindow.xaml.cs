@@ -54,7 +54,7 @@ namespace VideoManagementWpf
                 YearContent.Content = selection.Year;
                 GenreContent.Content = selection.Genre;
                 RatingContent.Content = selection.Rating;
-                DescriptionContent.Content = selection.Description;
+                DescriptionContent.Text = selection.Description;
             }
         }
 
