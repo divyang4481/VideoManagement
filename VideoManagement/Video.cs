@@ -20,17 +20,17 @@ namespace VideoManagement
         public string Genre { get; private set; }
         public string Description { get; private set; }
         public ushort Year { get; private set; }
+        public TypeOfVideo Type { get; private set; }
 
-        private Video()
-        {
-        }
+        private Video() { }
 
-        public Video(string name, string genre, string description, ushort year)
+        public Video(string name, string genre, string description, ushort year, TypeOfVideo type)
         {
             Title = name;
             Genre = genre;
             Description = description;
             Year = year;
+            Type = type;
         }
 
         public override string ToString()
