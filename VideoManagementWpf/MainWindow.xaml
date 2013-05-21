@@ -5,20 +5,19 @@
         Title="Video Manager" Height="350" Width="525" Background="#FF404040">
 
     <Grid>
-        <Button x:Name="AddVideoButton" Content="Add Video" HorizontalAlignment="Left" Margin="210,7,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.373,4.35" Click="AddVideoButton_Click" Height="23" Background="#FF1D1D1D" Foreground="White"/>
+        <Button x:Name="AddVideoButton" Content="Add Video" HorizontalAlignment="Left" Margin="290,7,0,0" VerticalAlignment="Top" Width="106" RenderTransformOrigin="0.373,4.35" Click="AddVideoButton_Click" Height="23" Background="#FF1D1D1D" Foreground="White"/>
         <ListBox x:Name="LibraryListBox" HorizontalAlignment="Left" Height="274" Margin="10,35,0,0" VerticalAlignment="Top" Width="275" Grid.ColumnSpan="2" SelectionChanged="LibraryListBox_SelectionChanged" Foreground="White" Background="#FF555555"/>
-        <TextBox x:Name="NewVideoTextBox" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2" Foreground="White" Background="#FF555555" Text="Django Unchained"/>
-        <Label x:Name="TitleLabel" Content="Title" HorizontalAlignment="Left" Margin="290,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="290,41,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="GenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="290,72,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="RatingLabel" Content="Rating" HorizontalAlignment="Left" Margin="290,103,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="NewVideoTextBox" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" Foreground="White" Background="#FF555555" Text="Django Unchained"/>
+        <Label x:Name="TitleLabel" Content="Title" HorizontalAlignment="Left" Margin="290,46,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="YearLabel" Content="Year" HorizontalAlignment="Left" Margin="290,77,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="GenreLabel" Content="Genre" HorizontalAlignment="Left" Margin="290,108,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label x:Name="DescriptionLabel" Content="Description" HorizontalAlignment="Left" Margin="290,134,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="TitleContent" Content="" HorizontalAlignment="Left" Margin="365,10,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="YearContent" Content="" HorizontalAlignment="Left" Margin="365,41,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="GenreContent" Content="" HorizontalAlignment="Left" Margin="365,72,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <Label x:Name="RatingContent" Content="" HorizontalAlignment="Left" Margin="365,103,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="TitleContent" Content="" HorizontalAlignment="Left" Margin="365,46,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="YearContent" Content="" HorizontalAlignment="Left" Margin="365,77,0,0" VerticalAlignment="Top" Foreground="White"/>
+        <Label x:Name="GenreContent" Content="" HorizontalAlignment="Left" Margin="365,108,0,0" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock x:Name="DescriptionContent" HorizontalAlignment="Left" Margin="290,165,0,0" VerticalAlignment="Top" Height="144" Width="217" Foreground="White" TextWrapping="Wrap"/>
-        <TextBox x:Name="NewVideoYearTextBox" HorizontalAlignment="Left" Height="23" Margin="160,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Foreground="White" Background="#FF555555" Text="2012"/>
+        <TextBox x:Name="NewVideoYearTextBox" HorizontalAlignment="Left" Height="23" Margin="240,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Foreground="White" Background="#FF555555" Text="2012"/>
+        <Button x:Name="RemoveSelectionButton" Content="Remove Selection" HorizontalAlignment="Left" Margin="404,7,0,0" VerticalAlignment="Top" Width="106" RenderTransformOrigin="0.373,4.35" Click="RemoveSelectionButton_Click" Height="23" Background="#FF1D1D1D" Foreground="White"/>
 
     </Grid>
 </Window>
