@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Author: Sean Kelley
+// Date Modified: 21 May 2013
+// Assignment: C490 A1
+// File: Imdb.cs
+// Purpose: To provide an easy way to interact with imdbapi.org.
+// Note: Several exceptions could be raised during this process and are not handled here,
+//       so they must be handled by the caller.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,24 +24,50 @@ namespace VideoManagement
         private const string BaseRequest = "http://imdbapi.org/?type=json&plot=simple&episode=0&limit=1&yg=1&mt=none&"
                                          + "lang=en-US&offset=&aka=simple&release=simple&business=0&tech=0";
 
-        public string Title { get; private set; }
-        public ushort Year { get; private set; }
+        private string Title { get; set; }
+        private ushort Year { get; set; }
         private string RequestUrl { get; set; }
 
+        // Disallow the use of a default constructor
+        private Imdb()
+        {
+        }
 
+        /// <summary>
+        /// Construct an IMDB object based on given title and year.
+        /// </summary>
+        /// <param name="title">The Title of the given TV Show or Movie</param>
+        /// <param name="year">The year in which the video was first released.
+        /// For TV Shows, the year in which the first episode of season 1 aired.</param>
         public Imdb(string title, ushort year)
         {
+            // Format title for request url
             Title = title.Trim().Replace(' ', '+');
             Year = year;
-            RequestUrl = MakeRequest(Title, Year);
+
+            // Create and set the request URL
+            RequestUrl = MakeRequest();
         }
 
-        private static string MakeRequest(string title, ushort year)
+        /// <summary>
+        /// Constructs a URL to use in a request to imdbapi.org using the BaseRequest, Title, and Year.
+        /// </summary>
+        /// <param name="title">The Title of the given TV Show or Movie</param>
+        /// <param name="year">The year in which the video was first released.
+        /// For TV Shows, the year in which the first episode of season 1 aired.</param>
+        /// <returns>A string of the full request URL</returns>
+        /// <remarks>It is assumed that Title has already been transformed. I.E. Spaces are replaced with '+'</remarks>
+        private string MakeRequest()
         {
-            return string.Format("{0}&title={1}&year={2}", BaseRequest, title, year);
+            return string.Format("{0}&title={1}&year={2}", BaseRequest, Title, Year);
         }
 
-
+        /// <summary>
+        /// This will return a dictionary containing the title, genre, and description for a given movie.
+        /// </summary>
+        /// <returns>A dictionary with the following keys (hopefully) filled in: 
+        /// "title", "genre", "description"</returns>
+        /// <remarks>Many exceptions can be thrown from this method, it is upto the caller to handle these.</remarks>
         public Dictionary<string, string> GetJsonFromApi()
         {
             // Make sure that the RequestUrl has been formed
@@ -52,6 +85,7 @@ namespace VideoManagement
             // Read the response stream into jsonString
             string jsonString = (new StreamReader(response.GetResponseStream())).ReadToEnd();
 
+            // Form our dictionary
             Dictionary<string, string> dict = new Dictionary<string, string>();
             dict["title"] = GetJsonField(jsonString, "title");
             dict["genre"] = GetJsonField(jsonString, "genres");
@@ -59,6 +93,15 @@ namespace VideoManagement
 
             return dict;
         }
+
+        /// <summary>
+        /// Parse a string of json and return the data contained within a specific field of it.
+        /// </summary>
+        /// <param name="source">The JSON to parse which should only contain one TV Show or Movie.</param>
+        /// <param name="field">The field to locate and return the contents of</param>
+        /// <returns>The contents of the field</returns>
+        /// <remarks>Throws an exception if field could not be found. The Regex used only tested on
+        /// the following fields: title, genres, plot_simple.</remarks>
         public static string GetJsonField(string source, string field)
         {
             // Create a regex to capture a value, example input:

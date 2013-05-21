@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Author: Sean Kelley
+// Date Modified: 21 May 2013
+// Assignment: C490 A1
+// File: MainWindow.xaml.cs
+// Purpose: To provide a WPF interface for managing videos.
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +26,7 @@ namespace VideoManagementWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Video information is stored into Library containers that are a collection of videos.
         private Library Movies, TVShows;
         const string MovieListBoxHeading = " --- Movies ------ ",
                      TVShowListBoxHeading = " --- TV Shows ---- ";
@@ -64,14 +70,22 @@ namespace VideoManagementWpf
             };
 
             // Prepopulate with favorites
-            foreach (Video tvShow in PersonalFavorites[0])
-                TVShows.Add(tvShow);
-            foreach (Video movie in PersonalFavorites[1])
-                Movies.Add(movie);
+            for (int i = 0; i < PersonalFavorites[0].Count(); i++)
+                TVShows.Add(ref PersonalFavorites[0][i]);
+            for (int i = 0; i < PersonalFavorites[1].Count(); i++)
+                Movies.Add(ref PersonalFavorites[1][i]);
 
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Updates the ListBox so that it matches what are contained within the
+        /// TVShows and Movies Libraries. Note that it always displays Movies first
+        /// and displays single line (defined above) to denote which section.
+        /// If data binding were used (which it should be), this function would be 
+        /// largely useless, but it accomplishes the same task, albeit at the cost
+        /// of reinitializing the ListBox upon every change.
+        /// </summary>
         private void UpdateListBox()
         {
             LibraryListBox.Items.Clear();
@@ -85,6 +99,12 @@ namespace VideoManagementWpf
                 LibraryListBox.Items.Add(tvShow);
         }
 
+        /// <summary>
+        /// This event corresponds with the pressing of the "Add Video" button. It
+        /// attempts to add a video to the appropriate library based on information
+        /// retrieved from imdbapi.org's API. It then calls UpdateListBox to display
+        /// those results.
+        /// </summary>
         private void AddVideoButton_Click(object sender, RoutedEventArgs e)
         {
             // Make sure both inputs are even present
@@ -110,7 +130,8 @@ namespace VideoManagementWpf
             catch
             {
                 // Many exceptions could be thrown during the proccess of grabbing information from
-                // imdbapi.org, so we will attempt to catch them here.
+                // imdbapi.org, so we will attempt to catch them here. Better error messages should
+                // be added.
                 MessageBox.Show("Error: Could not add " + NewVideoTextBox.Text + " (" + year + ").");
                 return;
             }
@@ -118,6 +139,12 @@ namespace VideoManagementWpf
             UpdateListBox();
         }
 
+        /// <summary>
+        /// This event corresponds with the action of selecting a ListBox item.
+        /// Its purpose is to display information beyond just the year and title
+        /// by filling in corresponding Labels and TextBlocks.
+        /// </summary>
+        /// <param name="sender">Corresponds with ListBox and is used to obtain which video is selected.</param>
         private void LibraryListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // Make sure the selected item isn't null, otherwise exceptions will be thrown when accessing it
@@ -138,12 +165,17 @@ namespace VideoManagementWpf
             DescriptionContent.Text = selection.Description;
         }
 
+        /// <summary>
+        /// Corresponds with "Remove Selection" button. It attempts to remove a video from
+        /// its corresponding library based on which item in the ListBox is selected.
+        /// </summary>
         private void RemoveSelectionButton_Click(object sender, RoutedEventArgs e)
         {
             // Make sure a heading isn't selected
             if (LibraryListBox.SelectedItem.GetType() != typeof(Video))
                 return;
 
+            // Find out which video is selected
             Video selection = (Video)LibraryListBox.SelectedItem;
             if (selection != null)
             {
