@@ -19,25 +19,23 @@ namespace VideoManagement
         public string Title { get; private set; }
         public string Genre { get; private set; }
         public string Description { get; private set; }
-        public float Rating { get; private set; }
         public ushort Year { get; private set; }
 
-        public Video()
+        private Video()
         {
         }
 
-        public Video(string name, string genre, string description, float rating, ushort year = 2013)
+        public Video(string name, string genre, string description, ushort year)
         {
             Title = name;
             Genre = genre;
             Description = description;
-            Rating = rating;
             Year = year;
         }
 
         public override string ToString()
         {
-            return Title;
+            return Title + " (" + Year + ")";
         }
     }
 }
