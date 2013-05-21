@@ -28,9 +28,15 @@ namespace VideoManagement
         }
 
         // Add a video to the library by specifying all relevant information
-        public void Add(string name, string genre, string description, float rating, ushort year = 1912)
+        public void Add(string name, string genre, string description, ushort year)
         {
-            Videos.Add(new Video(name, genre, description, rating, year));
+            Videos.Add(new Video(name, genre, description, year));
+        }
+        
+        // Add a video to the library by passing in a video
+        public void Add(Video video)
+        {
+            Videos.Add(video);
         }
 
         // Add a video to the library by specifying just the name and year
@@ -41,7 +47,7 @@ namespace VideoManagement
             Imdb imdb = new Imdb(name, year);
             Dictionary<string,string> dict = imdb.GetJsonFromApi();
 
-            Add(dict["title"], dict["genre"], dict["description"], 5.0f, year);
+            Add(dict["title"], dict["genre"], dict["description"], year);
             return true;
         }
 
