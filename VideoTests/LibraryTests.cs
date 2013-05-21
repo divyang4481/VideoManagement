@@ -32,14 +32,14 @@ namespace VideoTests
     public class LibraryTests
     {
         const string name = "Some Name", genre = "Some Genre", description = "Some Description";
-        const float rating = 9.1f;
+        const ushort year = 2012;
 
         [TestMethod]
         public void AddVideosToLibrary()
         {
             // setup
             Library Videos = new Library(TypeOfVideo.TVShow);
-            Videos.Add(name, genre, description, rating);
+            Videos.Add(name, genre, description, year);
 
             // asserts
             Assert.AreEqual(Videos.Length(), 1, "Library size did not increment");
@@ -52,7 +52,7 @@ namespace VideoTests
         {
             //setup
             Library Videos = new Library(TypeOfVideo.TVShow);
-            Videos.Add(name, genre, description, rating);
+            Videos.Add(name, genre, description, year);
 
             // asserts
             Assert.AreEqual(Videos.Remove(name), 1, "Number of videos removed does not match expected.");
@@ -64,7 +64,7 @@ namespace VideoTests
         {
             //setup
             Library Videos = new Library(TypeOfVideo.TVShow);
-            Videos.Add(name, genre, description, rating);
+            Videos.Add(name, genre, description, year);
 
             // asserts
             Assert.AreEqual((Videos.GetByName(name)).Title, name, "Video found does not match in name");
