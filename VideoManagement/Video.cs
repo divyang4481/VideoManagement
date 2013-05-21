@@ -18,15 +18,13 @@ namespace VideoManagement
     /// Instances of the video class will contain basic information on the video and
     /// provide minimal ways of interacting with it.
     /// </summary>
-    public class Video
+    public struct Video
     {
-        public string Title { get; private set; }
-        public string Genre { get; private set; }
-        public string Description { get; private set; }
-        public ushort Year { get; private set; }
-        public TypeOfVideo Type { get; private set; }
-
-        private Video() { }
+        public string Title;
+        public string Genre;
+        public string Description;
+        public ushort Year;
+        public TypeOfVideo Type;
 
         /// <summary>
         /// The only public constructor available to the Video class. Must declare all relevant
@@ -40,7 +38,7 @@ namespace VideoManagement
         /// <param name="type">The type of video. i.e. TypeOfVideo.TVShow or TypeOfVideo.Movie</param>
         public Video(string name, string genre, string description, ushort year, TypeOfVideo type)
         {
-            Title = name;
+            Title = new string(name.ToCharArray());
             Genre = genre;
             Description = description;
             Year = year;

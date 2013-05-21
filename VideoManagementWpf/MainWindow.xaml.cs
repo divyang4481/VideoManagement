@@ -171,13 +171,17 @@ namespace VideoManagementWpf
         /// </summary>
         private void RemoveSelectionButton_Click(object sender, RoutedEventArgs e)
         {
+            // Make sure there is something selected
+            if (LibraryListBox.SelectedItem == null)
+                return;
+
             // Make sure a heading isn't selected
             if (LibraryListBox.SelectedItem.GetType() != typeof(Video))
                 return;
 
             // Find out which video is selected
             Video selection = (Video)LibraryListBox.SelectedItem;
-            if (selection != null)
+            if (selection.Title != null)
             {
                 // remove selection from appropriate Library
                 switch (selection.Type)

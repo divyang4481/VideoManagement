@@ -88,7 +88,7 @@ namespace VideoTests
 
             // asserts
             Assert.AreEqual((Videos.GetByName(name)).Title, name, "Video found does not match in name");
-            Assert.IsTrue(Videos.GetByName("doesn't exist") == null, "GetByName found something that it shouldn't have");
+            Assert.IsTrue(Videos.GetByName("doesn't exist").Title == null, "GetByName found something that it shouldn't have");
         }
     }
 }
