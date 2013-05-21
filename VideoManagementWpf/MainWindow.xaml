@@ -18,7 +18,7 @@
         <TextBlock x:Name="DescriptionContent" HorizontalAlignment="Left" Margin="299,170,0,0" VerticalAlignment="Top" Height="139" Width="211" Foreground="White" TextWrapping="Wrap"/>
         <TextBox x:Name="NewVideoYearTextBox" HorizontalAlignment="Left" Height="23" Margin="182,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" Foreground="White" Background="#FF555555" Text="2012"/>
         <Button x:Name="RemoveSelectionButton" Content="Remove Selection" HorizontalAlignment="Left" Margin="410,7,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.373,4.35" Click="RemoveSelectionButton_Click" Height="23" Background="#FF1D1D1D" Foreground="White"/>
-        <ComboBox x:Name="MovieTVShowComboBox" HorizontalAlignment="Left" Margin="232,7,0,0" VerticalAlignment="Top" Width="105" Height="23" Background="#FFC10000" Foreground="#FF555B9B"/>
+        <ComboBox x:Name="MovieTVShowComboBox" HorizontalAlignment="Left" Margin="232,7,0,0" VerticalAlignment="Top" Width="105" Height="23" Background="White" Foreground="#FF555555"/>
 
     </Grid>
 </Window>
